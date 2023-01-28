@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Quotes Brush.ttf";
+    font-family: "Quotes Brush";
     src: url("../fonts/Quotes\ Brush.ttf") format("truetype");
 }
 
@@ -12,7 +12,7 @@ body {
     margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, span {
+h1, h2, h3, h4, h5, h6, p, span, li, input {
     letter-spacing: 0.1em;
 }
 
@@ -22,15 +22,17 @@ header {
     width: 100%;
     height: 333px;
     position: relative;
+    filter: grayscale(78%);
+    z-index: 100px;
 }
 
 nav {
-    width: calc(100% - 20px);
+    width: calc(100% - 24px);
     height: 66px;
     background-color: white;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 12px;
+    left: 12px;
     display: flex;
     flex: 1;
 }
@@ -38,6 +40,8 @@ nav {
 nav ul {
     list-style-type: none;
     display: flex;
+    margin: 0 48px;
+    padding: 0;
 }
 
 nav ul.right-ul {
@@ -46,23 +50,111 @@ nav ul.right-ul {
 
 nav ul li {
     display: list-item;
+    margin: auto 0;
+    font-size: 14px;
+}
+
+nav ul li:not(:first-child) {
+    margin-left: 33px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+header h1 {
+    font-family: "Quotes Brush";
+    font-size: 117px;
+    position: absolute;
+    top: calc(50% - 1ex + 33px);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#search {
+    visibility: hidden;
+    position: absolute;
+    width: calc(100% - 24px);
+    top: 12px;
+    left: 12px;
+    height: 213px;
+    background-color: #fff;
+    z-index: 300px;
+    transition: visibility 0s .5s;
+}
+
+#search div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#search a {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    font-size: 35px;
+    color: #000;
+    cursor: pointer;
+}
+
+#search input {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: 55px;
+    font-size: 33px;
+    color: gray;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    outline: none;
+}
+
+#search input:focus {
+    border: none;
 }
 
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 @media screen and (min-device-width: 1280px) {
     .container {
-        margin: 20px 0 0 0;
+        margin: 99px 0 0 0;
     }
 }
 
 @media screen and (max-device-width: 1279px) {
     .container {
-        margin: 5px 0 0 0;
+        flex-direction: column;
+        margin: 33px 0 0 0;
     }
 }
 
@@ -73,13 +165,13 @@ nav ul li {
 
 @media screen and (min-device-width: 1280px) {
     .ticket {
-        width: 49%;
-        margin-bottom: 10px;
+        flex: 0 1 47%;
+        margin-bottom: 20px;
     }
 
-    .ticket:nth-child(2n + 1) {
+    /* .ticket:nth-child(2n + 1) {
         margin-right: 2%;
-    }
+    } */
 }
 
 @media screen and (max-device-width: 1279px) {
